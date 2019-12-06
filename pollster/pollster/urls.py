@@ -20,6 +20,9 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
+    # For landing, from pages app,
+    path('', include('pages.urls')),
+
 	# for anything polls/; include polls.urls.
 	# As soon as we go to /polls/ anything, it'll look at the polls.urls file. 
 	path('polls/', include('polls.urls')),
