@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h1 class="text-center mb-3">Poll Questions</h1>
+
+	<!-- displaying polls data -->
+	{% if latest_question_list %}
+		{% for question in latest_question_list %}
+			<!-- using card class -->
+			<div class="card mb-3">
+				<div class="card-body">
+					<!-- double {} for outputting data -->
+					<p class="lead">{{ question.question_text }}</p>
+					<!-- Refer to urls.py namespace -->
+					<!-- load views (detail, results) from polls -->
+					<!-- detail, priamry -->
+					<a href="{% url 'polls:detail' question.id %}" class="btn btn-primary btn-sm">
+						Vote now
+					</a>
+					<!-- results, secondary -->
+					<a href="{% url 'polls:results' question.id %}" class="btn btn-secondary btn-sm">
+						Results
+					</a>
+
+
+				</div> 
+			</div>
+		{% endfor %}
+
+	{% else %}
+		<p>No polls available</p>
+	{% endif %}
+
+{% endblock %}
+
+
